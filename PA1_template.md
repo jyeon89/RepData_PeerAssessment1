@@ -200,7 +200,7 @@ mean.nAct
 ```
 
 ```
-## [1] 10606.03
+## [1] 10323.11
 ```
 
 Median:
@@ -212,7 +212,7 @@ med.nAct
 ```
 
 ```
-## [1] 10520
+## [1] 10395
 ```
 
 
@@ -235,7 +235,7 @@ m.step
 ```
 ##              mean median
 ## Original 10766.19  10765
-## Imputed  10606.03  10520
+## Imputed  10323.11  10395
 ```
 
 There is a slight difference between the original and the imputed data. Mean and median vary according to the values created by the "mice" package. The feature of "mice" is powerful to understand the pattern of missing data that it is one of good ways to avoid introducing bias. I believe, by imputing missing values, it prevents reductions in efficiency and makes the analysis of data easier.
@@ -268,15 +268,25 @@ comb <- rbind(iday, iend)
 Compare average steps for every interval on weekdays and weekend:
 
 ```r
-compare <- ggplot(comb, aes(interval, mean.step, color = type)) + 
+compare1 <- ggplot(comb, aes(interval, mean.step, color = type)) + 
        geom_line(stat = 'identity') +
        facet_grid(type~.)
 
-compare
+compare1
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
+Duplicate the plots on a same panel:
+
+```r
+compare2 <- ggplot(comb, aes(interval, mean.step, color = type)) + 
+       geom_line(stat = 'identity')
+
+compare2
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 
 
